@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/dawid/Documents/technologieProgramowania/lista1/zadanie7/src/main/java</OriginalElement>
+  <nodes>
+    <node x="272.59090909090924" y="523.0">Test</node>
+    <node x="394.5511363636365" y="371.0">Prostokat</node>
+    <node x="76.05113636363643" y="111.0">AbstractFigura</node>
+    <node x="99.50000000000011" y="217.0">Pieciokat</node>
+    <node x="593.5511363636365" y="240.0">AbstractCzworokat</node>
+    <node x="66.55113636363643" y="-15.0">Obliczenia</node>
+    <node x="785.5511363636365" y="371.0">Kwadrat</node>
+    <node x="598.5511363636365" y="371.0">Romb</node>
+    <node x="286.5000000000001" y="217.0">Kolo</node>
+    <node x="-87.49999999999989" y="217.0">Szesciokat</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Prostokat" target="AbstractCzworokat" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="486.5511363636365" y="344.0" />
+      <point x="682.0511363636365" y="344.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="Test" target="Szesciokat" relationship="CREATE">
+      <point x="-2.8421709430404007E-14" y="-39.0" />
+      <point x="347.09090909090924" y="497.0" />
+      <point x="-3.999999999999943" y="497.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="Kwadrat" target="AbstractCzworokat" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="869.0511363636365" y="344.0" />
+      <point x="682.0511363636365" y="344.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="Test" target="Romb" relationship="CREATE">
+      <point x="-2.8421709430404007E-14" y="-39.0" />
+      <point x="347.09090909090924" y="497.0" />
+      <point x="682.0511363636365" y="497.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="AbstractFigura" target="Obliczenia" relationship="REALIZATION">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="Kolo" target="AbstractFigura" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="370.0000000000001" y="196.0" />
+      <point x="290.5511363636365" y="196.0" />
+      <point x="290.5511363636365" y="186.0" />
+      <point x="187.05113636363643" y="186.0" />
+      <point x="37.0" y="27.0" />
+    </edge>
+    <edge source="Test" target="AbstractFigura" relationship="CREATE">
+      <point x="-2.8421709430404007E-14" y="-39.0" />
+      <point x="347.09090909090924" y="497.0" />
+      <point x="-97.99999999999994" y="497.0" />
+      <point x="-97.99999999999989" y="186.0" />
+      <point x="113.05113636363643" y="186.0" />
+      <point x="-37.0" y="27.0" />
+    </edge>
+    <edge source="Szesciokat" target="AbstractFigura" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="-3.9999999999998863" y="196.0" />
+      <point x="290.5511363636365" y="196.0" />
+      <point x="290.5511363636365" y="186.0" />
+      <point x="187.05113636363643" y="186.0" />
+      <point x="37.0" y="27.0" />
+    </edge>
+    <edge source="Test" target="Kwadrat" relationship="CREATE">
+      <point x="-2.8421709430404007E-14" y="-39.0" />
+      <point x="347.09090909090924" y="497.0" />
+      <point x="869.0511363636365" y="497.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="Test" target="Pieciokat" relationship="CREATE">
+      <point x="-2.8421709430404007E-14" y="-39.0" />
+      <point x="347.09090909090924" y="497.0" />
+      <point x="183.0000000000001" y="497.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="Test" target="Kolo" relationship="CREATE">
+      <point x="-2.8421709430404007E-14" y="-39.0" />
+      <point x="347.09090909090924" y="497.0" />
+      <point x="370.0000000000001" y="497.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="Pieciokat" target="AbstractFigura" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="183.0000000000001" y="196.0" />
+      <point x="290.5511363636365" y="196.0" />
+      <point x="290.5511363636365" y="186.0" />
+      <point x="187.05113636363643" y="186.0" />
+      <point x="37.0" y="27.0" />
+    </edge>
+    <edge source="AbstractCzworokat" target="AbstractFigura" relationship="GENERALIZATION">
+      <point x="-5.6843418860808015E-14" y="-27.0" />
+      <point x="682.0511363636364" y="196.0" />
+      <point x="290.55113636363643" y="196.0" />
+      <point x="290.5511363636365" y="186.0" />
+      <point x="187.05113636363643" y="186.0" />
+      <point x="37.0" y="27.0" />
+    </edge>
+    <edge source="Test" target="Prostokat" relationship="CREATE">
+      <point x="-2.8421709430404007E-14" y="-39.0" />
+      <point x="347.09090909090924" y="497.0" />
+      <point x="486.5511363636365" y="497.0" />
+      <point x="0.0" y="50.0" />
+    </edge>
+    <edge source="Romb" target="AbstractCzworokat" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.8852201257861635" showDependencies="true" x="437.5" y="303.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
