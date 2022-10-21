@@ -3,7 +3,11 @@ import java.util.Objects;
 public class Test {
     public static void main ( String [] argv) {
         Obliczenia [] tab = new AbstractFigura[argv[0].length()];
+<<<<<<< HEAD
         System.out.println("Konflikt0");
+=======
+        System.out.println("Konflikt1");
+>>>>>>> c972b24703d9febba32c37766b843e70c59752ef
         
         char rodzajFigury;
         int licznik = 1;
