@@ -22,6 +22,7 @@
          To set the jboss.home environment variable the Maven way, set the jboss.home property in an active profile in
          the Maven 2 settings.xml file
       -->
+      <jboss.home>${env.JBOSS_HOME}</jboss.home>
       <jboss.domain>default</jboss.domain>
       <!-- The version of Weld extensions in use -->
       <weld.extensions.version>1.0.0-CR2</weld.extensions.version>
@@ -56,6 +57,13 @@
          <artifactId>cdi-api</artifactId>
          <scope>provided</scope>
       </dependency>
+      <!-- EJB -->
+      <dependency>
+         <groupId>org.jboss.ejb3</groupId>
+         <artifactId>jboss-ejb3-api</artifactId>
+         <scope>provided</scope>
+         <version>3.1.0</version>
+      </dependency>
       <!-- Common annotations (e.g., @PostConstruct, @PreDestroy, @Generated, @Resource) -->
       <dependency>
          <groupId>javax.annotation</groupId>
@@ -75,6 +83,12 @@
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-validator</artifactId>
          <version>4.0.0.GA</version>
+         <scope>provided</scope>
+      </dependency>
+      <!-- JSF -->
+      <dependency>
+         <groupId>javax.faces</groupId>
+         <artifactId>jsf-api</artifactId>
          <scope>provided</scope>
       </dependency>
       <!-- JPA -->
@@ -107,7 +121,6 @@
             </exclusion>
          </exclusions>
       </dependency>
-
    </dependencies>
    <build>
       <finalName>${artifactId}</finalName>
@@ -119,6 +132,32 @@
             <configuration>
                <source>1.6</source>
                <target>1.6</target>
+            </configuration>
+         </plugin>
+
+         <!-- Eclipse plugin can force download of source and JavaDoc jars -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-eclipse-plugin</artifactId>
+            <configuration>
+               <wtpversion>2.0</wtpversion>
+               <!--
+               <downloadSources>true</downloadSources>
+               <downloadJavadocs>true</downloadJavadocs>
+               -->
+            </configuration>
+         </plugin>
+
+         <!-- Configure the JBoss AS Maven deploy plugin -->
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jboss-maven-plugin</artifactId>
+            <configuration>
+               <jbossHome>${jboss.home}</jbossHome>
+               <serverName>${jboss.domain}</serverName>
+               <fileNames>
+                  <fileName>${project.build.directory}/${build.finalName}.war</fileName>
+               </fileNames>
             </configuration>
          </plugin>
       </plugins>

@@ -18,6 +18,8 @@
          [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
       -->
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <!-- To set the jboss.home environment variable the Maven way, set the jboss.home property in an active profile in the Maven 2 settings.xml file -->
+      <jboss.home>${env.JBOSS_HOME}</jboss.home>
       <jboss.domain>default</jboss.domain>
       <!-- The version of Weld extensions in use -->
       <weld.extensions.version>1.0.0-CR2</weld.extensions.version>
@@ -83,6 +85,12 @@
          <version>4.0.0.GA</version>
          <scope>provided</scope>
       </dependency>
+      <!-- JSF -->
+      <dependency>
+         <groupId>javax.faces</groupId>
+         <artifactId>jsf-api</artifactId>
+         <scope>provided</scope>
+      </dependency>
 
       <!-- Optional, but highly recommended. -->
       <dependency>
@@ -119,6 +127,32 @@
             <configuration>
                <source>1.6</source>
                <target>1.6</target>
+            </configuration>
+         </plugin>
+
+         <!-- Eclipse plugin can force download of source and JavaDoc jars -->
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-eclipse-plugin</artifactId>
+            <configuration>
+               <wtpversion>2.0</wtpversion>
+               <!--
+               <downloadSources>true</downloadSources>
+               <downloadJavadocs>true</downloadJavadocs>
+               -->
+            </configuration>
+         </plugin>
+
+         <!-- Configure the JBoss AS Maven deploy plugin -->
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>jboss-maven-plugin</artifactId>
+            <configuration>
+               <jbossHome>${jboss.home}</jbossHome>
+               <serverName>${jboss.domain}</serverName>
+               <fileNames>
+                  <fileName>${project.build.directory}/${build.finalName}.war</fileName>
+               </fileNames>
             </configuration>
          </plugin>
          <!-- Configure the Embedded GlassFish Maven plugin -->
