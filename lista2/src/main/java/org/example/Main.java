@@ -19,7 +19,7 @@ public class Main {
         Salesman salesman = Salesman.createSalesan();
         Client client = Client.createClient(scan);
 
-        while (Element.addElement(elements, scan)) {}
+        while (Element.addElement(elements, scan));
 
         Faktura faktura = new Faktura(salesman, client, elements);
         faktura.showFaktura();

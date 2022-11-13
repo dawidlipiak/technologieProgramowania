@@ -97,4 +97,14 @@ public class Element extends Faktura {
     public Double getArticlePrize() {
         return towar.prize;
     }
+
+    /**
+     * Metoda dodajaca elementy faktury do bazy danych
+     * @param element element dodawany do bazy danych
+     */
+    public void addToElementDataBase(Element element) {
+        /**
+         * Dodajemy do bazy danych elementow element.getArticleName(), element.getArticlePrize() oraz element.amount oraz element.vat
+         */
+    }
 }
