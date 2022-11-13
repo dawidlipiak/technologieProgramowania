@@ -7,29 +7,21 @@ import java.util.Scanner;
  * Klasa elementu faktury.
  */
 public class Element extends Faktura {
-    /**
-     * Obiekt towar.
-     */
+    /** Obiekt towar. */
     private Article towar;
-    /**
-     * ilosc towaru.
-     */
+    /** ilosc towaru. */
     int amount;
-    /**
-     * podatek vat towaru.
-     */
+    /** podatek vat towaru. */
     int vat;
 
-    Element() {
-    }
+    Element() {}
 
     /**
      * Konstruktor elementu faktury z niezbednymi informacjami o towarach.
-     *
      * @param article nazwa towaru
-     * @param amount  ilosc towaru
-     * @param prize   cena netto towaru
-     * @param vat     podatek vat w % towaru
+     * @param amount ilosc towaru
+     * @param prize cena netto towaru
+     * @param vat podatek vat w % towaru
      */
     Element(final String article, final int amount, final double prize, final int vat) {
         super();
@@ -40,9 +32,8 @@ public class Element extends Faktura {
 
     /**
      * Metoda dodajaca nowy elemnt faktury.
-     *
      * @param elements lista elementow
-     * @param scanner  system in
+     * @param scanner system in
      * @return czy kontynuowac dalej
      */
     public static boolean addElement(final List<Element> elements, final Scanner scanner) {
@@ -85,14 +76,14 @@ public class Element extends Faktura {
             Element element = new Element(product, amount, prize, vat);
             elements.add(element);
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
 
     /**
      * Metoda zwracajaca nazwe towaru.
-     *
      * @return nazwa towaru
      */
     public String getArticleName() {
@@ -101,10 +92,19 @@ public class Element extends Faktura {
 
     /**
      * Metoda zwracajaca cene netto towaru.
-     *
      * @return cena netto towaru
      */
     public Double getArticlePrize() {
         return towar.prize;
+    }
+
+    /**
+     * Metoda dodajaca elementy faktury do bazy danych
+     * @param element element dodawany do bazy danych
+     */
+    public void addToElementDataBase(Element element) {
+        /**
+         * Dodajemy do bazy danych elementow element.getArticleName(), element.getArticlePrize() oraz element.amount oraz element.vat
+         */
     }
 }

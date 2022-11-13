@@ -2,13 +2,17 @@ package org.example;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class TestElement {
     @Test
-    public void showElementValues(){
-        Element element = new Element("mleko", 2, 3.50, 23);
-        System.out.println(element.getArticleName());
-        System.out.println(element.amount);
-        System.out.println(element.getArticlePrize() + " zl");
-        System.out.println(element.vat + "%");
+    public void testPrizeValueOfArticle(){
+        Element element = new Element("mleko", 2, 5.89, 23);
+        assertEquals((Double)5.89,element.getArticlePrize());
+    }
+    @Test
+    public void  testNameOfArticle(){
+        Element element = new Element("mleko", 2, 5.89, 23);
+        assertEquals("mleko",element.getArticleName());
     }
 }

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/dawid/Documents/technologieProgramowania/lista2/src/main/java</OriginalElement>
+  <nodes>
+    <node x="382.03664921465975" y="180.0">org.example.Faktura</node>
+    <node x="336.5" y="-36.0">org.example.Client</node>
+    <node x="57.028795811518364" y="44.8848167539267">org.example.Main</node>
+    <node x="336.5" y="435.4921465968586">org.example.Salesman</node>
+    <node x="-275.848167539267" y="235.5">org.example.Article</node>
+    <node x="-4.0" y="191.0">org.example.Element</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.example.Element" target="org.example.Article" relationship="CREATE">
+      <point x="-145.5" y="-15.0" />
+      <point x="84.0" y="-15.0" />
+    </edge>
+    <edge source="org.example.Client" target="org.example.Faktura" relationship="GENERALIZATION">
+      <point x="0.0" y="49.5" />
+      <point x="471.5" y="121.5" />
+      <point x="516.5366492146597" y="121.5" />
+      <point x="0.0" y="-82.5" />
+    </edge>
+    <edge source="org.example.Article" target="org.example.Element" relationship="GENERALIZATION">
+      <point x="84.0" y="-0.0" />
+      <point x="-145.5" y="-0.0" />
+    </edge>
+    <edge source="org.example.Element" target="org.example.Faktura" relationship="GENERALIZATION">
+      <point x="145.5" y="-0.0" />
+      <point x="-134.5" y="-0.0" />
+    </edge>
+    <edge source="org.example.Salesman" target="org.example.Faktura" relationship="GENERALIZATION">
+      <point x="67.81675392670127" y="-40.01832460732987" />
+      <point x="548.8167539267013" y="355.0" />
+      <point x="548.8167539267013" y="341.1937172774869" />
+      <point x="33.25916230366454" y="78.69371727748688" />
+    </edge>
+    <edge source="org.example.Faktura" target="org.example.Element" relationship="TO_MANY">
+      <point x="-134.5" y="15.0" />
+      <point x="145.5" y="15.0" />
+    </edge>
+    <edge source="org.example.Faktura" target="org.example.Salesman" relationship="TO_ONE">
+      <point x="-15.0" y="82.5" />
+      <point x="501.53664921465975" y="355.0" />
+      <point x="466.0" y="355.0" />
+      <point x="-15.0" y="-49.5" />
+    </edge>
+    <edge source="org.example.Element" target="org.example.Article" relationship="TO_ONE">
+      <point x="-145.5" y="15.0" />
+      <point x="84.0" y="15.0" />
+    </edge>
+    <edge source="org.example.Faktura" target="org.example.Client" relationship="TO_ONE">
+      <point x="52.84031413612536" y="-79.8821989528796" />
+      <point x="569.3769633507851" y="121.5" />
+      <point x="543.9214659685861" y="121.5" />
+      <point x="72.42146596858606" y="56.5261780104712" />
+    </edge>
+    <edge source="org.example.Main" target="org.example.Faktura" relationship="CREATE">
+      <point x="74.5" y="-0.0" />
+      <point x="421.5392670157065" y="83.3848167539267" />
+      <point x="421.5392670157065" y="139.19109947643977" />
+      <point x="446.99476439790544" y="139.19109947643977" />
+      <point x="-69.5418848167543" y="-85.7565445026178" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="true" x="187.99999999999994" y="249.49999999999997" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
