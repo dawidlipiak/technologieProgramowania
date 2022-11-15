@@ -23,6 +23,11 @@ public class Main {
 
         Faktura faktura = new Faktura(salesman, client, elements);
         faktura.showFaktura();
+
+        /**
+         * dodanie danych do bazy danych.
+         */
+        DataBaseAdapter.addAllToDataBase(client,salesman,elements);
     }
 
 }

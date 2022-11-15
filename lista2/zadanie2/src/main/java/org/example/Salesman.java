@@ -39,15 +39,4 @@ public class Salesman {
         System.out.println("Sprzedawca" +"\n-----------------------------");
         System.out.println( salesman.firm + "\nNIP: " + salesman.nip +"\n" + salesman.street + "\n" + salesman.postcode +" "+ salesman.city +"\n" );
     }
-
-    /**
-     * Metoda dodajaca utworzonego sprzedawce do bazy danych sprzedawcow
-     * @param salesman sprzedawca dodawany do bazy danych
-     */
-    public void addToSalesmansDatabase (Salesman salesman){
-        /**
-         * Mozemy tu przez salesman.firm, salesman.nip ... salesman.city dostac sie do
-         * kazdej wartosci ktora w naszej bazie danych sprzedawcow bylaby zapisana do odpowiedniej kolumny
-         */
-    }
 }

@@ -23,6 +23,7 @@ public class Main {
 
         Faktura faktura = new Faktura(salesman, client, elements);
         faktura.showFaktura();
+
     }
 
 }

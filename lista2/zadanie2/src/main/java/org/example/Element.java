@@ -6,22 +6,18 @@ import java.util.Scanner;
 /**
  * Klasa elementu faktury.
  */
-public class Element extends Faktura {
-    /** Obiekt towar. */
+public class Element {
     private Article towar;
-    /** ilosc towaru. */
-    int amount;
-    /** podatek vat towaru. */
-    int vat;
+    int amount, vat;
 
-    Element() {}
 
     /**
      * Konstruktor elementu faktury z niezbednymi informacjami o towarach.
+     *
      * @param article nazwa towaru
-     * @param amount ilosc towaru
-     * @param prize cena netto towaru
-     * @param vat podatek vat w % towaru
+     * @param amount  ilosc towaru
+     * @param prize   cena netto towaru
+     * @param vat     podatek vat w % towaru
      */
     Element(final String article, final int amount, final double prize, final int vat) {
         super();
@@ -32,8 +28,9 @@ public class Element extends Faktura {
 
     /**
      * Metoda dodajaca nowy elemnt faktury.
+     *
      * @param elements lista elementow
-     * @param scanner system in
+     * @param scanner  system in
      * @return czy kontynuowac dalej
      */
     public static boolean addElement(final List<Element> elements, final Scanner scanner) {
@@ -76,14 +73,14 @@ public class Element extends Faktura {
             Element element = new Element(product, amount, prize, vat);
             elements.add(element);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
     /**
      * Metoda zwracajaca nazwe towaru.
+     *
      * @return nazwa towaru
      */
     public String getArticleName() {
@@ -92,6 +89,7 @@ public class Element extends Faktura {
 
     /**
      * Metoda zwracajaca cene netto towaru.
+     *
      * @return cena netto towaru
      */
     public Double getArticlePrize() {
@@ -99,12 +97,44 @@ public class Element extends Faktura {
     }
 
     /**
-     * Metoda dodajaca elementy faktury do bazy danych
-     * @param element element dodawany do bazy danych
+     * Metoda odpowiedzialna za policzenie calkowitej sumy netto produktow.
+     * @return zwraca sume netto kwot produktow
      */
-    public void addToElementDataBase(Element element) {
-        /**
-         * Dodajemy do bazy danych elementow element.getArticleName(), element.getArticlePrize() oraz element.amount oraz element.vat
-         */
+    public static double countTotalPrize(List<Element> elements) {
+        double sum = 0;
+
+        for (int i = 0; i < elements.size(); i++) {
+            sum += elements.get(i).getArticlePrize() * elements.get(i).amount;
+        }
+        return Math.round(sum * 100.0) / 100.0;
+    }
+    /**
+     * Metoda wyswietla calkowita sume kwot netto, vatu i brutto artykulow.
+     * @param totalVat wartosc sumy kwoty podatku vat
+     */
+    public static void showTotal(double totalVat, List<Element> elements) {
+        double totalNetto = countTotalPrize(elements);
+        totalVat = (Math.round(totalVat*100.0))/100.0;
+        System.out.println("\nRAZEM: " + totalNetto + " zl netto");
+        System.out.println("       " + totalVat + " zl kwoty vat" );
+        System.out.println("       " + (totalNetto+totalVat) + " zl brutto");
+    }
+
+    /**
+     * Metoda wyswietla elementy faktury.
+     * @return zliczona wartosc kwoty vat towarow
+     */
+    public static double showElements(List<Element> elements) {
+        double nettoPrize, vatPrize, totalVat = 0;
+        for (int i = 0; i < elements.size(); i++){
+            nettoPrize = Math.round(elements.get(i).getArticlePrize()*(double) elements.get(i).amount*100.0)/100.0;
+            vatPrize = Math.round(nettoPrize*(double)elements.get(i).vat)/100.0;
+            totalVat += vatPrize;
+
+            System.out.println((i+1) + " | " + elements.get(i).getArticleName() + " | " + elements.get(i).amount + " szt. | " +
+                    Math.round(elements.get(i).getArticlePrize()*100.0)/100.0 + " zl | " + nettoPrize + " zl | " + elements.get(i).vat + "% | " +
+                    vatPrize + " zl | " + Math.round((nettoPrize+vatPrize)*100.0)/100.0 + " zl");
+        }
+        return totalVat;
     }
 }

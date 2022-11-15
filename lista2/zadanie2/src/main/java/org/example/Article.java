@@ -3,7 +3,7 @@ package org.example;
 /**.
  * Klasa towaru.
  */
-public class Article extends Element {
+public class Article  {
     /** Nazwa towaru. */
     protected String article;
     /** cena towaru. */
