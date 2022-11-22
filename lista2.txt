@@ -1,0 +1,293 @@
+Zad 1
+CREATE DATABASE `db-aparaty`;
+CREATE USER `268485`@`localhost` IDENTIFIED BY "Dawid485";
+GRANT SELECT,INSERT ON *.* TO `268485`@localhost IDENTIFIED BY "Dawid485";
+FLUSH PRIVILEGES;
+
+Zad 2
+CREATE TABLE Matryca(
+ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+przekatna decimal(4,2) NOT NULL,
+rozdzielczosc decimal(3,1) NOT NULL,
+typ varchar(10) NOT NULL,
+CHECK(przekatna > 0 AND rozdzielczosc > 0));
+
+ALTER TABLE Matryca AUTO_INCREMENT=100;
+
+CREATE TABLE Obiektyw(
+ID int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+model varchar(30) NOT NULL, 
+minPrzeslona float NOT NULL, 
+maxPrzeslona float NOT NULL,
+CHECK (maxPrzeslona > minPrzeslona AND minPrzeslona > 0 ));
+
+CREATE TABLE Producent(
+ID int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+nazwa varchar(50), 
+kraj varchar(20));
+
+CREATE TABLE Aparat(
+model varchar(30) NOT NULL UNIQUE PRIMARY KEY,
+producent int NOT NULL,
+FOREIGN KEY(producent)
+ REFERENCES Producent(ID)
+ ON DELETE CASCADE,
+matryca int NOT NULL, FOREIGN KEY(matryca)
+ REFERENCES Matryca(ID)
+ ON DELETE CASCADE, 
+obiektyw int NOT NULL, FOREIGN KEY(obiektyw)
+ REFERENCES Obiektyw(ID)
+ ON DELETE CASCADE, 
+typ enum("kompaktowy","lustrzanka","profesjonalny","inny") NOT NULL);
+
+Zad 3
+sudo mysql -u 268485 -p
+Dawid485
+
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (12.89,52.1,'Web');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (78.23,22.7,'Brand');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (12.74,56.9,'Creative');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (65.18,98.6,'Paradigm');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (47.76,88.4,'Data');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (77.21,32.6,'Directives');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (97.65,19.6,'Security');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (86.23,87.1,'Web');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (95.22,76.6,'Marketing');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (54.85,71.3,'Solutions');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (42.31,58.3,'Matrix');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (37.87,51.4,'Factors');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (42.99,65.2,'Usability');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (81.67,57.5,'Exus');
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (76.21,69.5,'Paradigm');   
+
+INSERT INTO Matryca (przekatna,rozdzielczosc,typ) VALUES (-76.21,62.5,'Lash');   
+INSERT INTO Matryca (przekatna,typ) VALUES (62.5,'Lash');
+
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Vandervort',8095.58,23493.02);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Jacobs' ,7119.45,8261.7);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Daniel' ,17582.11,69480.49);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Morar',418.94,8952.49);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Padberg',872.3,5568.82);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Christ',7156.2,9849.99);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Sons',7421.54,8174.19);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Little' ,554.5,893.51);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Reynolds',1429.02,7332.5);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Sons',1554.83,9187.03);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Schmeler',14716.14,28205.57);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Hirthe',3443.75,5636.73);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Bailey',5202.91,6284.99);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Johnston',578.3,761.38);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('ALedner',1292.24,5212.84);
+
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('Aasdadner',5212.84,82387.23);
+INSERT INTO Obiektyw(model,minPrzeslona,maxPrzeslona) VALUES('ALedner',-1292.24,5212.84);
+
+
+INSERT INTO Producent(nazwa,kraj) VALUES('Haley - Kuvalis','Venezuela');
+INSERT INTO Producent(nazwa,kraj) VALUES('Klocko Group','Belarus');
+INSERT INTO Producent(nazwa,kraj) VALUES('Kemmer Group','Hong Kong');
+INSERT INTO Producent(nazwa,kraj) VALUES('Stanton Inc','China');
+INSERT INTO Producent(nazwa,kraj) VALUES('Krajcik - Lang','China');
+INSERT INTO Producent(nazwa,kraj) VALUES('Stanton - Kemmer','Azerbaijan');
+INSERT INTO Producent(nazwa,kraj) VALUES('Lubowitz, Runolfsson and Doyle','China');
+INSERT INTO Producent(nazwa,kraj) VALUES('Hessel - MacGyver','Swaziland');
+INSERT INTO Producent(nazwa,kraj) VALUES('Turcotte Group','China');
+INSERT INTO Producent(nazwa,kraj) VALUES('Breitenberg, Carter and Fadel','San Marino');
+INSERT INTO Producent(nazwa,kraj) VALUES('Sons','Taiwan');
+INSERT INTO Producent(nazwa,kraj) VALUES('Glover LLC','Japan');
+INSERT INTO Producent(nazwa,kraj) VALUES('Schumm, Marquardt and Kassulke','China');
+INSERT INTO Producent(nazwa,kraj) VALUES('Rosenbaum and Sons','Sweden');
+INSERT INTO Producent(nazwa,kraj) VALUES('Raynor, Hammes and Jacobi','Peru');
+
+INSERT INTO Producent(nazwa,kraj) VALUES('Raynor, Hammes and Jacobi','Peru',1231);
+
+
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('haptic',9,102,1,'inny');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('Redmi',8,109,7,'profesjonalny');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('Visual 10',1,102,4,'inny');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('digital',1,101,5,'lustrzanka');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('cross-platform',1,110,9,'kompaktowy');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('Master',12,107,11,'lustrzanka');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('multiLink',7,105,13,'profesjonalny');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('Best',14,112,10,'inny');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('Letex',6,114,14,'profesjonalny');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('primary',3,102,2,'kompaktowy');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('solid state',8,103,9,'inny');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('virtual',11,104,4,'lustrzanka');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('cross',14,111,2,'kompaktowy');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('bluetooth',5,113,5,'profesjonalny');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('mobile',13,105,10,'kompaktowy');
+
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('mobile',13,105,10,'kompaktowy');
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES('mobile',13,-105,10,'kompaktowy');
+INSERT INTO Aparat(model,producent,matryca,obiektyw) VALUES('mobile',13,105,10);
+
+Zad 4
+DELIMITER $$
+CREATE PROCEDURE aparatModelGenerate()
+BEGIN
+    DECLARE i INT;
+    DECLARE c CHAR(10) DEFAULT 'model ';
+    DECLARE p INT;
+    DECLARE m INT;
+    DECLARE o INT;
+    
+    SET i = 1;
+
+    WHILE i <= 100 DO 
+        SELECT ID FROM Producent ORDER BY RAND() LIMIT 1 INTO p;
+        SELECT ID FROM Matryca ORDER BY RAND() LIMIT 1 INTO m;
+        SELECT ID FROM Obiektyw ORDER BY RAND() LIMIT 1 INTO o;  
+
+        INSERT INTO Aparat (model,producent,matryca,obiektyw,typ) VALUES (CONCAT(c,i), p,m,o, "inny");
+        SET i = i + 1;
+    END WHILE;
+
+END$$
+DELIMITER ;
+
+Zad 5
+DELIMITER $$
+CREATE FUNCTION maxPrzekatna(idProducenta int)
+RETURNS varchar(25)
+ BEGIN 
+ DECLARE wantedModel varchar(25);   
+ SELECT model FROM Aparat AS A 
+ JOIN Matryca AS M ON A.matryca = M.ID 
+ WHERE A.producent = idProducenta 
+ ORDER BY przekatna DESC 
+ LIMIT 1 INTO wantedModel;
+
+ RETURN wantedModel;
+
+END$$
+DELIMITER ;   
+
+SELECT maxPrzekatna(12);
+
+Zad 6
+DELIMITER $$
+CREATE TRIGGER addModel BEFORE INSERT ON Aparat 
+FOR EACH ROW
+BEGIN 
+ IF (SELECT COUNT(*) FROM Producent WHERE NEW.producent = ID) = 0
+ THEN 
+    INSERT INTO Producent (ID) VALUE(NEW.producent);
+END IF;
+END$$
+DELIMITER ;
+
+INSERT INTO Aparat(model,producent,matryca,obiektyw,typ) VALUES("test6", 17, 102, 12, "inny");
+
+Zad 7
+DELIMITER $$
+CREATE FUNCTION countModel(idMatrycy int)
+RETURNS int
+BEGIN
+  DECLARE counter int;
+  SELECT COUNT(*) FROM Aparat AS A 
+  WHERE A.matryca = idMatrycy 
+  INTO counter;
+
+  RETURN counter;
+END$$
+DELIMITER ; 
+
+Zad 8
+DELIMITER $$
+CREATE TRIGGER deleteMatryca AFTER DELETE ON Aparat
+FOR EACH ROW
+BEGIN
+    IF (SELECT COUNT(*) FROM Aparat WHERE OLD.matryca = Aparat.matryca ) = 0
+    THEN
+        DELETE FROM Matryca WHERE OLD.matryca = ID;
+    END IF;
+END$$
+DELIMITER ;
+
+zad 9
+CREATE VIEW task9View AS 
+SELECT a.model, p.nazwa, m.przekatna, m.rozdzielczosc, o.minPrzeslona, o.maxPrzeslona FROM Aparat AS a
+JOIN Producent AS p ON p.ID = a.producent
+JOIN Matryca AS m ON m.ID = a.matryca
+JOIN Obiektyw AS o ON o.ID = a.obiektyw
+WHERE a.typ like 'lustrzanka' AND p.kraj <> 'China';
+
+zad10 
+
+CREATE VIEW producentInfo AS
+SELECT a.model,p.nazwa, p.kraj FROM Producent AS p
+Join Aparat AS a ON a.producent = p.ID;
+
+DELETE FROM Aparat WHERE producent IN (SELECT ID FROM Producent WHERE kraj LIKE 'China'); 
+
+Zad 11
+ALTER TABLE Producent ADD liczbaModeli int NOT NULL;
+
+UPDATE Producent 
+SET liczbaModeli = (SELECT COUNT(*) FROM Aparat WHERE Producent.ID = Aparat.producent);
+
+DROP TRIGGER addModel;
+
+DELIMITER $$
+CREATE TRIGGER addModel BEFORE INSERT ON Aparat
+FOR EACH ROW 
+BEGIN 
+ IF (SELECT COUNT(*) FROM Producent WHERE NEW.producent = ID) = 0
+    THEN 
+        INSERT INTO Producent (ID,liczbaModeli) VALUE(NEW.producent, 1);
+ END IF;
+ 
+END$$
+DELIMITER ;
+
+DROP TRIGGER changeProducentAfterInsertAparat;
+
+DELIMITER $$
+CREATE TRIGGER changeProducentAfterInsertAparat AFTER INSERT ON Aparat
+FOR EACH ROW
+BEGIN 
+    UPDATE Producent SET liczbaModeli = (SELECT COUNT(*) FROM Aparat WHERE Producent.ID = Aparat.producent);
+END$$
+DELIMITER ;
+ 
+DELIMITER $$
+CREATE TRIGGER changeProducentAfterDelOnAparat AFTER DELETE ON Aparat
+FOR EACH ROW
+BEGIN
+    UPDATE Producent SET liczbaModeli = (SELECT COUNT(*) FROM Aparat WHERE Producent.ID = Aparat.producent);
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER changeProducentAfterUpdateOnAparat AFTER UPDATE ON Aparat
+FOR EACH ROW
+BEGIN 
+    UPDATE Producent SET liczbaModeli = (SELECT COUNT(*) FROM Aparat WHERE Producent.ID = Aparat.producent);
+END$$
+DELIMITER ;
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
